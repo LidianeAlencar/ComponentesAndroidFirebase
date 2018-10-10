@@ -8,7 +8,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService(){
 
     override fun onMessageReceived(p0: RemoteMessage?) {
         super.onMessageReceived(p0)
-        Log.d("NOTIFICACAO_TITULO", "Message Notification Body: " + p0?.notification?.title)
-        Log.d("NOTIFICACAO_BODY",   "Message Notification Body: " + p0?.notification?.body)
+        Log.d("NOTIFICACAO_TITULO", p0?.notification?.title)
+        Log.d("NOTIFICACAO_BODY",  p0?.notification?.body)
+
+        NotificationUtils .showNotification(this,
+                1234,
+                "push",
+                "push",
+                p0?.notification?.title!!,
+                p0?.notification?.body!!)
+
     }
 }
